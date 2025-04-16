@@ -1,0 +1,58 @@
+<div id="employee-form" class="employee-form-container" *ngIf="empData">
+    <div class="form-header">
+        <h1>Update Employee Details</h1>
+    </div>
+
+    <form class="employee-details-form" (ngSubmit)="onUpdate(employeeForm)" #employeeForm="ngForm">
+        <div class="form-group">
+            <label for="employee_name">Employee Name</label>
+            <input type="text" id="employee_name" name="employee_name" [(ngModel)]="empData.employee_name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="employee_id">Employee ID</label>
+            <input type="text" id="employee_id" name="employee_id" [(ngModel)]="empData.employee_id" required>
+        </div>
+
+        <div class="form-group">
+            <label for="employee_email">Email Address</label>
+            <input type="email" id="employee_email" name="employee_email" [(ngModel)]="empData.employee_email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="male" [(ngModel)]="empData.gender"> Male
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="female" [(ngModel)]="empData.gender"> Female
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="other" [(ngModel)]="empData.gender"> Other
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="18" max="100" [(ngModel)]="empData.age" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" [(ngModel)]="empData.dob" required>
+        </div>
+
+        <div class="form-group">
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" [(ngModel)]="empData.contact" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Update</button>
+        </div>
+    </form>
+</div>
+
+<router-outlet></router-outlet>

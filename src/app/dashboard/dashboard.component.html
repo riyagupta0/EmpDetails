@@ -1,0 +1,41 @@
+<div id="employee-list" class="employee-list-container">
+    <div class="list-header">
+        <h1>Employee List</h1>
+    </div>
+
+    <div class="table-container">
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Employee ID</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Date of Birth</th>
+                    <th>Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let emp of employees; trackBy : trackEmp">
+                    <td>{{emp.employee_name}}</td>
+                    <td>{{emp.employee_id}}</td>
+                    <td>{{emp.employee_email}}</td>
+                    <td>{{emp.gender}}</td>
+                    <td>{{emp.age}}</td>
+                    <td>{{emp.dob}}</td>
+                    <td>{{emp.contact}}</td>
+                    <td class="action-buttons">
+                        <button class="edit-btn" [routerLink]="['/update-emp', emp.id]">Edit</button>
+                        <button class="delete-btn" (click)="deleteEmp(emp.id)">Delete</button>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<router-outlet></router-outlet>

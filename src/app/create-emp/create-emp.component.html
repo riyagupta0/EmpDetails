@@ -1,0 +1,59 @@
+<div id="employee-form" class="employee-form-container">
+    <div class="form-header">
+        <h1>Create New Employee Details</h1>
+    </div>
+
+    <form class="employee-details-form" (ngSubmit)="onSubmit(employeeForm)" #employeeForm="ngForm">
+        <div class="form-group">
+            <label for="employee_name">Employee Name</label>
+            <input type="text" id="employee_name" name="employee_name" required ngModel>
+        </div>
+
+        <div class="form-group">
+            <label for="employee_id">Employee ID</label>
+            <input type="text" id="employee_id" name="employee_id" ngModel required>
+        </div>
+
+        <div class="form-group">
+            <label for="employee_email">Email Address</label>
+            <input type="email" id="employee_email" name="employee_email" ngModel required>
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="male" ngModel> Male
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="female" ngModel> Female
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="other" ngModel> Other
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="18" max="100" ngModel required>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" ngModel required>
+        </div>
+
+        <div class="form-group">
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" ngModel required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="reset" class="reset-btn">Reset</button>
+        </div>
+    </form>
+</div>
+
+<router-outlet></router-outlet>

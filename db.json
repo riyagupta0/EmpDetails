@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "1234"
+    }
+  ],
+  "employees": [
+    {
+      "id": "9769",
+      "employee_name": "abc",
+      "employee_id": "112",
+      "employee_email": "abc@gmail.com",
+      "age": 23,
+      "contact": "2333444455",
+      "gender": "female",
+      "dob": "2025-04-15"
+    },
+    {
+      "id": "b954",
+      "employee_name": "Riya ",
+      "employee_id": "111",
+      "employee_email": "riya@gmail.com",
+      "gender": "female",
+      "age": 22,
+      "dob": "2025-04-01",
+      "contact": "2345678910"
+    }
+  ]
+}
