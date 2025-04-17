@@ -12,6 +12,8 @@ import { EmployeesService } from '../employees.service';
 })
 export class CreateEmpComponent {
 
+  calculatedAge: number = 0;
+
   constructor(private route: Router, private empService: EmployeesService) { }
   onSubmit(form: any) {
     if (form.valid) {
@@ -24,6 +26,24 @@ export class CreateEmpComponent {
       alert("Invalid form");
 
     }
+  }
+  calculateAge(event: any) {
+    const dob = new Date(event.target.value);
+    const today = new Date();
+
+
+    console.log(today.getFullYear(), dob.getFullYear());
+
+    let age = today.getFullYear() - dob.getFullYear();
+
+    console.log(today.getMonth(), dob.getMonth());
+    const m = today.getMonth() - dob.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    this.calculatedAge = age;
   }
 
 

@@ -35,14 +35,16 @@
         </div>
 
         <div class="form-group">
-            <label for="age">Age</label>
-            <input type="number" id="age" name="age" min="18" max="100" ngModel required>
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" ngModel required (change)="calculateAge($event)" #dobInput="ngModel">
         </div>
 
         <div class="form-group">
-            <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" ngModel required>
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="18" max="100" [ngModel]="calculatedAge">
         </div>
+
+
 
         <div class="form-group">
             <label for="contact">Contact Number</label>
