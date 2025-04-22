@@ -14,6 +14,7 @@ export class UpdateEmpComponent implements OnInit {
 
   empId: any;
   empData: any;
+  calculatedAge: number = 0;
 
   constructor(private route: ActivatedRoute, private empService: EmployeesService, private routee: Router) { }
 
@@ -24,9 +25,12 @@ export class UpdateEmpComponent implements OnInit {
     this.empService.getEmployeebyID(this.empId).subscribe((data) => {
       this.empData = data;
       console.log(this.empData);
+      this.calculatedAge = this.empData.age;
+
     })
   }
   onUpdate(form: any): void {
+    console.log(JSON.stringify(form.value));
     if (form.valid) {
       this.empService.updateEmployees(this.empId, this.empData).subscribe((res) => {
         console.log('Employee updated successfully!', res);
@@ -38,6 +42,24 @@ export class UpdateEmpComponent implements OnInit {
       alert('Update failed. Please try again.');
     }
 
+  }
+  calculateAge(event: any) {
+    const dob = new Date(event.target.value);
+    const today = new Date();
+
+
+    console.log(today.getFullYear(), dob.getFullYear());
+
+    let age = today.getFullYear() - dob.getFullYear();
+
+    console.log(today.getMonth(), dob.getMonth());
+    const m = today.getMonth() - dob.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    this.calculatedAge = age;
   }
 
 }

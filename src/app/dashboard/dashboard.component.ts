@@ -23,10 +23,17 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteEmp(id: any): void {
-    this.empService.deleteEmployee(id).subscribe(() => {
-      this.employees = this.employees.filter((emp: any) => emp.id !== id);
+    this.empService.deleteEmployee(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.employees = this.employees.filter((emp: any) => emp.id !== id);
+        alert(res);
+      },
+      error: (err) => {
+        console.error('Delete failed:', err);
+        alert('Delete failed. Please try again.');
+      }
     });
-
   }
   trackEmp(index: number, emp: any) {
     return emp.id;

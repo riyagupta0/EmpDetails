@@ -17,9 +17,12 @@ export class CreateEmpComponent {
   constructor(private route: Router, private empService: EmployeesService) { }
   onSubmit(form: any) {
     if (form.valid) {
-      this.empService.createEmployees(form).subscribe(() => {
+      this.empService.createEmployees(form.value).subscribe(() => {
         alert("Employee is successfully added!");
         this.route.navigate(['/dashboard']);
+      }, error => {
+        console.error("Backend error:", error);
+        alert("Something went wrong. Please check console for details.");
       });
 
     } else {
